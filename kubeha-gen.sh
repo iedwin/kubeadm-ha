@@ -10,8 +10,8 @@ function check_parm()
   fi
 }
 
-if [ -f ./cluster-info ]; then
-	source ./cluster-info 
+if [ -f ~/cluster-info ]; then
+	source ~/cluster-info 
 fi
 
 check_parm "Enter the IP address of master-01: " ${CP0_IP} 

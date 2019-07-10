@@ -3,7 +3,7 @@
 
 ``` shell
 # 创建集群信息文件
-$ cat ./cluster-info
+$ cat ~/cluster-info
 CP0_IP=10.130.29.80
 CP1_IP=10.130.29.81
 CP2_IP=10.130.29.82
