@@ -23,24 +23,21 @@ kubeadm token create --print-join-command
 ## The following images could be used for deploying:
 
 ```
-k8s.gcr.io/coredns:1.3.1
-k8s.gcr.io/etcd:3.3.10
-k8s.gcr.io/kube-apiserver:v1.14.0
-k8s.gcr.io/kube-controller-manager:v1.14.0
-k8s.gcr.io/kube-proxy:v1.14.0
-k8s.gcr.io/kube-scheduler:v1.14.0
+k8s.gcr.io/kube-apiserver:v1.15.0
+k8s.gcr.io/kube-controller-manager:v1.15.0
+k8s.gcr.io/kube-scheduler:v1.15.0
+k8s.gcr.io/kube-proxy:v1.15.0
 k8s.gcr.io/pause:3.1
-
-k8s.gcr.io/traefik:1.7.9
+k8s.gcr.io/etcd:3.3.10
+k8s.gcr.io/coredns:1.3.1
+traefik:1.7
 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1
-
-gcr.io/kubernetes-helm/tiller:v2.13.1
-
+gcr.io/kubernetes-helm/tiller:v2.14.1
 k8s.gcr.io/addon-resizer:1.8.4
 k8s.gcr.io/metrics-server-amd64:v0.3.1
-
-quay.io/calico/node:v3.5.3
-quay.io/calico/cni:v3.5.3
+quay.io/coreos/flannel:v0.11.0-amd64
+edwin1987/nfs-provisioner
+quay.io/external_storage/cephfs-provisioner
 ```
 
 ## License
