@@ -5,7 +5,7 @@ kubeadm reset -f
 echo """
 apiVersion: kubeadm.k8s.io/v1beta1
 kind: ClusterConfiguration
-kubernetesVersion: v1.14.0
+kubernetesVersion: v1.15.0
 networking:
   # This CIDR is a Calico default. Substitute or remove for your CNI provider.
   podSubnet: 192.168.0.0/16
@@ -20,7 +20,7 @@ mkdir -p $HOME/.kube
 rm -f $HOME/.kube/config
 cp -f /etc/kubernetes/admin.conf ${HOME}/.kube/config
 
-kubectl apply -f https://raw.githubusercontent.com/Lentil1016/kubeadm-ha/1.14.0/calico/calico.yaml
+kubectl apply -f flannal/kube-flannel.yml
 
 echo "Cluster create finished."
 
@@ -33,24 +33,24 @@ prompt = yes
 countryName                     = Country Name (2 letter code)
 countryName_value               = CN
 stateOrProvinceName             = State or Province Name (full name)
-stateOrProvinceName_value       = Beijing
+stateOrProvinceName_value       = TsingTao
 localityName                    = Locality Name (eg, city)
-localityName_value              = Haidian
+localityName_value              = Laoshan
 organizationName                = Organization Name (eg, company)
-organizationName_value          = Channelsoft
+organizationName_value          = Centling
 organizationalUnitName          = Organizational Unit Name (eg, section)
 organizationalUnitName_value    = R & D Department
 commonName                      = Common Name (eg, your name or your server\'s hostname)
 commonName_value                = *.multi.io
 emailAddress                    = Email Address
-emailAddress_value              = lentil1016@gmail.com
+emailAddress_value              = edwin.wang@centling.com
 """ > ~/ikube/tls/openssl.cnf
 openssl req -newkey rsa:4096 -nodes -config ~/ikube/tls/openssl.cnf -days 3650 -x509 -out ~/ikube/tls/tls.crt -keyout ~/ikube/tls/tls.key
 
 kubectl create -n kube-system secret tls ssl --cert ~/ikube/tls/tls.crt --key ~/ikube/tls/tls.key
-kubectl apply -f https://raw.githubusercontent.com/Lentil1016/kubeadm-ha/1.14.0/plugin/traefik.yaml
-kubectl apply -f https://raw.githubusercontent.com/Lentil1016/kubeadm-ha/1.14.0/plugin/metrics.yaml
-kubectl apply -f https://raw.githubusercontent.com/Lentil1016/kubeadm-ha/1.14.0/plugin/kubernetes-dashboard.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/plugin/traefik.yaml
+kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/plugin/metrics.yaml
 
 echo "Plugin install finished."
 echo "Waiting for all pods into 'Running' statu. You can press 'Ctrl + c' to terminate this waiting any time you like."
