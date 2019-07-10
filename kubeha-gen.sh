@@ -150,7 +150,7 @@ kubeadm init --config /etc/kubernetes/kubeadm-config.yaml
 mkdir -p $HOME/.kube
 cp -f /etc/kubernetes/admin.conf ${HOME}/.kube/config
 
-kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/flannal/kube-flannel.yml
+kubectl apply -f flannal/kube-flannel.yml
 
 JOIN_CMD=`kubeadm token create --print-join-command`
 
@@ -204,9 +204,9 @@ emailAddress_value              = edwin.wang.2017@gmail.com
 openssl req -newkey rsa:4096 -nodes -config ~/ikube/tls/openssl.cnf -days 3650 -x509 -out ~/ikube/tls/tls.crt -keyout ~/ikube/tls/tls.key
 kubectl create -n kube-system secret tls ssl --cert ~/ikube/tls/tls.crt --key ~/ikube/tls/tls.key
 
-kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/plugin/traefik.yaml
-kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/plugin/metrics.yaml
-kubectl apply -f https://raw.githubusercontent.com/iedwin/kubeadm-ha/dev/plugin/kubernetes-dashboard.yaml
+kubectl apply -f plugin/traefik.yaml
+kubectl apply -f plugin/metrics.yaml
+kubectl apply -f plugin/kubernetes-dashboard.yaml
 
 echo "Plugin install finished."
 echo "Waiting for all pods into 'Running' status. You can press 'Ctrl + c' to terminate this waiting any time you like."
